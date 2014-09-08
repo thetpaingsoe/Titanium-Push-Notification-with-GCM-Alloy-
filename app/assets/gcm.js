@@ -59,10 +59,11 @@ var service = Ti.Android.currentService;
 	}),
 	notification = Ti.Android.createNotification({
 		contentIntent: pintent,
-		contentTitle: title,
+		contentTitle: Ti.Filesystem.getResRawDirectory()+title,
 		contentText: message,
 		tickerText: statusBarMessage,
-		icon: Ti.App.Android.R.drawable.appicon,
+		icon: Titanium.App.Android.R.drawable.myicon,
+		sound:  Ti.Filesystem.getResRawDirectory() + "music.mp3",
 		flags: Ti.Android.FLAG_AUTO_CANCEL | Ti.Android.FLAG_SHOW_LIGHTS
 	});
 	Ti.Android.NotificationManager.notify(notificationId, notification);

@@ -1,11 +1,20 @@
-Welcome to your Appcelerator Titanium Mobile Project
 
-This is a blank project.  Start by editing your application's app.js to 
-make your first mobile project using Titanium.
+This project is the titanium push notification full project with alloy for android.
 
+In this project i am using the gcm.js module (https://github.com/iamyellow/gcm.js)
+
+
+Installation Guide
+------------------
+1. Download the Titanium-Push-Notification-with-GCM-Alloy project from Git
+2. Download the GCM.js Module (https://github.com/iamyellow/gcm.js)
+3. ...
 
 
 ----------------------------------
+Author : Thet Paing Soe
+----------------------------------
+
 Stuff our legal folk make us say:
 
 Appcelerator, Appcelerator Titanium and associated marks and logos are 

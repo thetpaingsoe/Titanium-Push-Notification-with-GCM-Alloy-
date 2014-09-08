@@ -9,7 +9,7 @@ function doClick(e) {
 // });
 
 var gcm = require('net.iamyellow.gcmjs');
-
+alert(Ti.Filesystem.getResRawDirectory());
 var doRegistration = function(callbacks) {
 	gcm.registerForPushNotifications(callbacks);
 };
