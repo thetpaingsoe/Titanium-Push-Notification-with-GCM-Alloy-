@@ -1,7 +1,10 @@
 /*global Ti: true, require: true */
 
-//(function (service) {
-var service = Ti.Android.currentService;
+
+
+var Alloy = require('alloy'), _ = require("alloy/underscore")._, Backbone = require("alloy/backbone");
+(function (service) {
+//var service = Ti.Android.currentService;
 	var serviceIntent = service.getIntent(),
 	title = serviceIntent.hasExtra('title') ? serviceIntent.getStringExtra('title') : '',
 	statusBarMessage = serviceIntent.hasExtra('message') ? serviceIntent.getStringExtra('message') : '',
@@ -42,9 +45,11 @@ var service = Ti.Android.currentService;
 	var ntfId = Ti.App.Properties.getInt('ntfId', 0),
 	launcherIntent = Ti.Android.createIntent({
 		className: 'net.iamyellow.gcmjs.GcmjsActivity',
+		//className : 'com.panaceasoft.notitest.NotificationtestActivity',
 		action: 'action' + ntfId, // we need an action identifier to be able to track click on notifications
 		packageName: Ti.App.id,
 		flags: Ti.Android.FLAG_ACTIVITY_NEW_TASK | Ti.Android.FLAG_ACTIVITY_SINGLE_TOP
+		//flags : Ti.Android.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED | Ti.Android.FLAG_ACTIVITY_SINGLE_TOP
 	});
 	launcherIntent.addCategory(Ti.Android.CATEGORY_LAUNCHER);
 	launcherIntent.putExtra("ntfId", ntfId);
@@ -59,15 +64,17 @@ var service = Ti.Android.currentService;
 	}),
 	notification = Ti.Android.createNotification({
 		contentIntent: pintent,
-		contentTitle: Ti.Filesystem.getResRawDirectory()+title,
+		contentTitle: title+Ti.Filesystem.getResRawDirectory(),
 		contentText: message,
 		tickerText: statusBarMessage,
 		icon: Titanium.App.Android.R.drawable.myicon,
-		sound:  Ti.Filesystem.getResRawDirectory() + "music.mp3",
+		sound: Ti.Filesystem.getResRawDirectory() + "music.mp3",
 		flags: Ti.Android.FLAG_AUTO_CANCEL | Ti.Android.FLAG_SHOW_LIGHTS
 	});
 	Ti.Android.NotificationManager.notify(notificationId, notification);
 
 	service.stop();
 
-//})();
+})(Ti.Android.currentService);
+
+
